@@ -53,4 +53,9 @@ public class MotorBoat extends Boat {
 
         setEngineVolume(items[super.getCountFields()]);
     }
+
+    @Override
+    public String getType() {
+        return "Motor boat";
+    }
 }

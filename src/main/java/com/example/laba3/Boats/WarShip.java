@@ -6,7 +6,7 @@ public class WarShip extends MotorBoat {
     public WarShip(){
         super();
         countGuns = 0;
-        typeShip = TypeWarship.BATTLESHIP;
+        typeShip = ClassWarship.BATTLESHIP;
     }
     protected int countGuns;
     public void setCountGuns(String countGuns)throws Exception {
@@ -26,7 +26,7 @@ public class WarShip extends MotorBoat {
         return countGuns;
     }
 
-    public String TypeWarshipsToString(TypeWarship type){
+    public String ClassWarshipsToString(ClassWarship type){
         String res = "";
 
         switch (type){
@@ -39,19 +39,19 @@ public class WarShip extends MotorBoat {
         return res;
     }
 
-    protected TypeWarship typeShip;
-    public TypeWarship getTypeShip() {
+    protected ClassWarship typeShip;
+    public ClassWarship getTypeShip() {
         return typeShip;
     }
-    public void setTypeShip(String typeShip) throws Exception{
-        TypeWarship type;
+    public void setClassShip(String typeShip) throws Exception{
+        ClassWarship type;
         typeShip = typeShip.toUpperCase();
 
         switch (typeShip){
-            case "AIRCRAFT", "AIRCRAFT CARRIER" -> type = TypeWarship.AIRCRAFT_CARRIER;
-            case "CRUISER" -> type = TypeWarship.CRUISER;
-            case "DESTROYER" -> type = TypeWarship.DESTROYER;
-            case "BATTLESHIP" -> type = TypeWarship.BATTLESHIP;
+            case "AIRCRAFT", "AIRCRAFT CARRIER" -> type = ClassWarship.AIRCRAFT_CARRIER;
+            case "CRUISER" -> type = ClassWarship.CRUISER;
+            case "DESTROYER" -> type = ClassWarship.DESTROYER;
+            case "BATTLESHIP" -> type = ClassWarship.BATTLESHIP;
 
             default -> throw new Exception("Error! Incorrect value of the type ship");
         }
@@ -73,7 +73,7 @@ public class WarShip extends MotorBoat {
 
         int offset = super.getCountFields();
         setCountGuns(items[offset]);
-        setTypeShip(items[offset + 1]);
+        setClassShip(items[offset + 1]);
     }
 
     @Override
@@ -88,13 +88,18 @@ public class WarShip extends MotorBoat {
                     item[1] = Integer.toString(getCountGuns());
                 }
                 case 1 -> {
-                    item[0] = "Warship type";
-                    item[1] = TypeWarshipsToString(getTypeShip());
+                    item[0] = "Warship class";
+                    item[1] = ClassWarshipsToString(getTypeShip());
                 }
             }
             res.add(item);
         }
 
         return res;
+    }
+
+    @Override
+    public String getType() {
+        return "War ship";
     }
 }

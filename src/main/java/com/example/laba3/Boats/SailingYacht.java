@@ -84,4 +84,9 @@ public abstract class SailingYacht extends Boat {
         setSailCount(items[offset]);
         setSailsSquare(items[offset + 1]);
     }
+
+    @Override
+    public String getType(){
+        return "Sailing yacht";
+    }
 }

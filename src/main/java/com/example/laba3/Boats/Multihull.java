@@ -51,4 +51,9 @@ public class Multihull extends SailingYacht {
 
         setCountHull(items[super.getCountFields()]);
     }
+
+    @Override
+    public String getType() {
+        return "Multihull";
+    }
 }

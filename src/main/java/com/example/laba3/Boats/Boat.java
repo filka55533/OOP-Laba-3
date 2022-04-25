@@ -126,4 +126,8 @@ public abstract class Boat {
         setName(items[3]);
 
     }
+
+    public String getType(){
+        return "Boat";
+    }
 }

@@ -1,6 +1,6 @@
 package com.example.laba3.Boats;
 
-public enum TypeWarship {
+public enum ClassWarship {
         AIRCRAFT_CARRIER,
         CRUISER,
         DESTROYER,

@@ -51,4 +51,9 @@ public class Monohull extends SailingYacht {
 
         setDraft(items[super.getCountFields()]);
     }
+
+    @Override
+    public String getType() {
+        return "Monohull";
+    }
 }

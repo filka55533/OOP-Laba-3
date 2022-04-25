@@ -53,4 +53,9 @@ public class CargoBoat extends MotorBoat {
 
         setTonnage(items[super.getCountFields()]);
     }
+
+    @Override
+    public String getType() {
+        return "Cargo boat";
+    }
 }
