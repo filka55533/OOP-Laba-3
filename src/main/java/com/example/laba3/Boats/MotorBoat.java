@@ -10,12 +10,8 @@ public class MotorBoat extends Boat {
 
     protected double engineVolume;
 
-    @Override
-    public int getCountFields() {
-        return super.getCountFields() + 1;
-    }
-
     public void setEngineVolume(String engineVolume) throws Exception{
+
         double num;
         try{
             num = Double.parseDouble(engineVolume);
@@ -27,13 +23,22 @@ public class MotorBoat extends Boat {
             throw new Exception("Error! Engine volume should be greater than zero");
         else
             this.engineVolume = num;
+
     }
     public double getEngineVolume() {
         return engineVolume;
     }
 
+
+    @Override
+    public int getCountFields() {
+        return super.getCountFields() + 1;
+    }
+
+
     @Override
     public ArrayList<String[]> getNameItems() {
+
         ArrayList<String[]> res = super.getNameItems();
 
         String[] item = new String[2];
@@ -42,20 +47,26 @@ public class MotorBoat extends Boat {
 
         res.add(item);
         return res;
+
     }
+
 
     @Override
     public void setItems(String[] items) throws Exception {
+
         super.setItems(items);
 
         if (items.length < getCountFields())
             throw new Exception("Error! Incorrect items count");
 
+
         setEngineVolume(items[super.getCountFields()]);
     }
+
 
     @Override
     public String getType() {
         return "Motor boat";
     }
+
 }

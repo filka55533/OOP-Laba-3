@@ -24,19 +24,22 @@ public abstract class Boat implements Cloneable {
         return length;
     }
 
+
     public double getWeight() {
         return weight;
     }
+
 
     public int getCrewCount() {
         return crewCount;
     }
 
+
     public void setCrewCount(String crewCount) throws Exception{
+
         int numberCrew;
         try{
             numberCrew = Integer.parseInt(crewCount);
-
         }catch (Exception e){
             throw new Exception("Error! Incorrect value in crew count field");
         }
@@ -45,9 +48,12 @@ public abstract class Boat implements Cloneable {
             this.crewCount = numberCrew;
         else
             throw new Exception("Error! Value in crew count field should be greater than zero");
+
     }
 
+
     public void setLength(String length) throws Exception {
+
         double number;
         try{
             number = Double.parseDouble(length);
@@ -59,9 +65,12 @@ public abstract class Boat implements Cloneable {
             throw new Exception("Error! Value of length should be greater 0");
         else
             this.length = number;
+
     }
 
+
     public void setWeight(String weight) throws Exception{
+
         double number;
         try{
             number = Double.parseDouble(weight);
@@ -73,14 +82,19 @@ public abstract class Boat implements Cloneable {
             throw new Exception("Error! Value of weight should be greater 0");
         else
             this.weight = number;
+
     }
 
+
     public void setName(String name) throws Exception {
+
         if (name.equals(""))
             throw new Exception("Error! Name can not be empty");
         else
             this.name = name;
+
     }
+
 
     public String getName() {
         return name;
@@ -89,7 +103,9 @@ public abstract class Boat implements Cloneable {
     //[0] - field's name
     //[1] - field value
     public ArrayList<String[]> getNameItems(){
+
         ArrayList<String[]> res = new ArrayList<>();
+
         for (int i = 0; i < COUNT_FIELDS; i++){
             String[] field = new String[2];
             switch (i){
@@ -110,13 +126,17 @@ public abstract class Boat implements Cloneable {
                     field[1] = getName();
                 }
             }
+
             res.add(field);
+
         }
 
         return res;
     }
 
+
     public void setItems(String[] items) throws Exception{
+
         if (items.length < COUNT_FIELDS)
             throw new Exception("Error! Incorrect count of items");
 
@@ -127,12 +147,15 @@ public abstract class Boat implements Cloneable {
 
     }
 
+
     public String getType(){
         return "Boat";
     }
+
 
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
+
 }

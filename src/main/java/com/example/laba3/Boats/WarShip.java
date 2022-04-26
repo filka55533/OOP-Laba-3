@@ -8,8 +8,12 @@ public class WarShip extends MotorBoat {
         countGuns = 0;
         typeShip = ClassWarship.BATTLESHIP;
     }
+
+
     protected int countGuns;
+
     public void setCountGuns(String countGuns)throws Exception {
+
         int num;
         try{
             num = Integer.parseInt(countGuns);
@@ -21,12 +25,17 @@ public class WarShip extends MotorBoat {
             throw new Exception("Error! Count guns should be a positive number");
         else
             this.countGuns = num;
+
     }
+
+
     public int getCountGuns() {
         return countGuns;
     }
 
+
     public String ClassWarshipsToString(ClassWarship type){
+
         String res = "";
 
         switch (type){
@@ -39,11 +48,15 @@ public class WarShip extends MotorBoat {
         return res;
     }
 
+
     protected ClassWarship typeShip;
+
     public ClassWarship getTypeShip() {
         return typeShip;
     }
+
     public void setClassShip(String typeShip) throws Exception{
+
         ClassWarship type;
         typeShip = typeShip.toUpperCase();
 
@@ -59,13 +72,16 @@ public class WarShip extends MotorBoat {
         this.typeShip = type;
     }
 
+
     @Override
     public int getCountFields() {
         return super.getCountFields() + 2;
     }
 
+
     @Override
     public void setItems(String[] items) throws Exception {
+
         super.setItems(items);
 
         if (items.length < getCountFields())
@@ -74,10 +90,13 @@ public class WarShip extends MotorBoat {
         int offset = super.getCountFields();
         setCountGuns(items[offset]);
         setClassShip(items[offset + 1]);
+
     }
+
 
     @Override
     public ArrayList<String[]> getNameItems() {
+
         ArrayList<String[]> res = super.getNameItems();
 
         for (int i = 0; i < 2; i++){
@@ -102,4 +121,5 @@ public class WarShip extends MotorBoat {
     public String getType() {
         return "War ship";
     }
+
 }

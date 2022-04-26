@@ -20,8 +20,12 @@ public class BSONSerializer {
 
     private final String DOCUMENT_NAME = "boats.bson";
 
+
     private final Map<String, BoatCreateDelegate> objectsConstructors;
+
+
     public BSONSerializer(){
+
         objectsConstructors = new HashMap<>();
 
         objectsConstructors.put(new CargoBoat().getType(), CargoBoat::new);
@@ -31,6 +35,7 @@ public class BSONSerializer {
         objectsConstructors.put(new WarShip().getType(), WarShip::new);
 
     }
+
 
     public void toSerializeBoats(ObservableList<Boat> boatsList) throws IOException {
 
@@ -61,7 +66,9 @@ public class BSONSerializer {
 
     }
 
+
     public ObservableList<Boat> toDeserializeBoats(){
+
         ObservableList<Boat> res = FXCollections.observableArrayList();
 
         if (Files.notExists(Paths.get(DOCUMENT_NAME)))
@@ -74,14 +81,12 @@ public class BSONSerializer {
             buffer.writeBytes(Files.readAllBytes(Paths.get(DOCUMENT_NAME)));
             BsonBinaryReader reader = new BsonBinaryReader(ByteBuffer.wrap(buffer.toByteArray()));
 
-
-            boolean isNotEnd = true;
             reader.readStartDocument();
             while (reader.readBsonType() != BsonType.END_OF_DOCUMENT){
 
-
                 String type = reader.readString();
                 Boat boat = objectsConstructors.get(type).initializing();
+
 
                 ArrayList<String> items = new ArrayList<>();
                 for (int i = 0; i < boat.getCountFields() && reader.readBsonType() != BsonType.END_OF_DOCUMENT; i++){
@@ -90,19 +95,29 @@ public class BSONSerializer {
 
 
                 try{
+
                     boat.setItems(items.toArray(new String[items.size()]));
                     res.add(boat);
+
                 }catch (Exception e) {
+
                     System.out.println("Error in getting array");
+
                 }
 
             }
+
             reader.readEndDocument();
+
         }catch (Exception e){
+
             e.printStackTrace();
             System.out.println("Oops");
+
         }
 
         return res;
+
     }
+
 }

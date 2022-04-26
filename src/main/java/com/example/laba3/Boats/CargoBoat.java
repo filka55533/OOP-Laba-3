@@ -3,6 +3,7 @@ package com.example.laba3.Boats;
 import java.util.ArrayList;
 
 public class CargoBoat extends MotorBoat {
+
     public CargoBoat(){
         super();
         tonnage = 0.0;
@@ -11,6 +12,7 @@ public class CargoBoat extends MotorBoat {
     protected double tonnage;
 
     public void setTonnage(String tonnage) throws Exception {
+
         double number;
         try{
             number = Double.parseDouble(tonnage);
@@ -22,18 +24,22 @@ public class CargoBoat extends MotorBoat {
             throw new Exception("Error! Tonnage should be positive");
         else
             this.tonnage = number;
+
     }
     public double getTonnage() {
         return tonnage;
     }
+
 
     @Override
     public int getCountFields() {
         return super.getCountFields() + 1;
     }
 
+
     @Override
     public ArrayList<String[]> getNameItems() {
+
         ArrayList<String[]> res = super.getNameItems();
 
         String[] item = new String[2];
@@ -42,20 +48,26 @@ public class CargoBoat extends MotorBoat {
 
         res.add(item);
         return res;
+
     }
+
 
     @Override
     public void setItems(String[] items) throws Exception {
+
         super.setItems(items);
 
         if (items.length < getCountFields())
             throw new Exception("Error! Incorrect items count");
 
         setTonnage(items[super.getCountFields()]);
+
     }
+
 
     @Override
     public String getType() {
         return "Cargo boat";
     }
+
 }

@@ -19,6 +19,7 @@ public abstract class SailingYacht extends Boat {
     }
 
     public void setSailCount(String sailCount) throws Exception{
+
         int number;
         try{
             number = Integer.parseInt(sailCount);
@@ -30,12 +31,17 @@ public abstract class SailingYacht extends Boat {
             throw new Exception("Error! Sails count should be greater 0");
         else
             this.sailCount = number;
+
     }
+
+
     public int getSailCount() {
         return sailCount;
     }
 
+
     public void setSailsSquare(String sailsSquare) throws Exception{
+
         double number;
         try{
             number = Double.parseDouble(sailsSquare);
@@ -47,16 +53,22 @@ public abstract class SailingYacht extends Boat {
             throw new Exception("Error! Sails square should be greater 0");
         else
             this.sailsSquare = number;
+
     }
+
+
     public double getSailsSquare() {
         return sailsSquare;
     }
 
+
     @Override
     public ArrayList<String[]> getNameItems() {
+
         ArrayList<String[]> res = super.getNameItems();
 
         for (int i = 0; i < 2; i++){
+
             String[] field = new String[2];
             switch (i){
                 case 0 -> {
@@ -68,13 +80,18 @@ public abstract class SailingYacht extends Boat {
                     field[1] = Double.toString(getSailsSquare());
                 }
             }
+
             res.add(field);
+
         }
+
         return res;
     }
 
+
     @Override
     public void setItems(String[] items) throws Exception {
+
         super.setItems(items);
 
         if (items.length < getCountFields())
@@ -82,6 +99,7 @@ public abstract class SailingYacht extends Boat {
 
         int offset = super.getCountFields();
         setSailCount(items[offset]);
+
         setSailsSquare(items[offset + 1]);
     }
 
