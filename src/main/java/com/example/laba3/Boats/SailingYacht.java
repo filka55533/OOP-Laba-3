@@ -21,7 +21,7 @@ public abstract class SailingYacht extends Boat {
     public void setSailCount(String sailCount) throws Exception{
         int number;
         try{
-            number = Integer.getInteger(sailCount);
+            number = Integer.parseInt(sailCount);
         }catch (Exception e){
             throw new Exception("Error! Incorrect value of sails count");
         }
@@ -56,7 +56,7 @@ public abstract class SailingYacht extends Boat {
     public ArrayList<String[]> getNameItems() {
         ArrayList<String[]> res = super.getNameItems();
 
-        for (int i = 0; i < getCountFields() - super.getCountFields(); i++){
+        for (int i = 0; i < 2; i++){
             String[] field = new String[2];
             switch (i){
                 case 0 -> {

@@ -12,7 +12,7 @@ public class Multihull extends SailingYacht {
     public void setCountHull(String countHull) throws Exception {
         int num;
         try{
-            num = Integer.getInteger(countHull);
+            num = Integer.parseInt(countHull);
         }catch (Exception e){
             throw new Exception("Error! Incorrect value about hulls count");
         }

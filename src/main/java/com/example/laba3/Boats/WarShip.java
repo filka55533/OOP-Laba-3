@@ -12,7 +12,7 @@ public class WarShip extends MotorBoat {
     public void setCountGuns(String countGuns)throws Exception {
         int num;
         try{
-            num = Integer.getInteger(countGuns);
+            num = Integer.parseInt(countGuns);
         }catch (Exception e){
             throw new Exception("Error! Incorrect value of count guns");
         }
@@ -80,7 +80,7 @@ public class WarShip extends MotorBoat {
     public ArrayList<String[]> getNameItems() {
         ArrayList<String[]> res = super.getNameItems();
 
-        for (int i = 0; i < getCountFields() - super.getCountFields(); i++){
+        for (int i = 0; i < 2; i++){
             String[] item = new String[2];
             switch (i){
                 case 0 -> {

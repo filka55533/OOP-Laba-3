@@ -3,7 +3,7 @@ package com.example.laba3.Boats;
 
 import java.util.ArrayList;
 
-public abstract class Boat {
+public abstract class Boat implements Cloneable {
     private static final int COUNT_FIELDS = 4;
     public int getCountFields(){
         return COUNT_FIELDS;
@@ -35,7 +35,7 @@ public abstract class Boat {
     public void setCrewCount(String crewCount) throws Exception{
         int numberCrew;
         try{
-            numberCrew = Integer.getInteger(crewCount);
+            numberCrew = Integer.parseInt(crewCount);
 
         }catch (Exception e){
             throw new Exception("Error! Incorrect value in crew count field");
@@ -90,7 +90,7 @@ public abstract class Boat {
     //[1] - field value
     public ArrayList<String[]> getNameItems(){
         ArrayList<String[]> res = new ArrayList<>();
-        for (int i = 0; i < getCountFields(); i++){
+        for (int i = 0; i < COUNT_FIELDS; i++){
             String[] field = new String[2];
             switch (i){
                 case 0 -> {
@@ -129,5 +129,10 @@ public abstract class Boat {
 
     public String getType(){
         return "Boat";
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
